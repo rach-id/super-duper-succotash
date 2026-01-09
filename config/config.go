@@ -14,6 +14,9 @@ import (
 )
 
 const (
+
+
+	
 	// FuzzModeDrop is a mode in which we randomly drop reads/writes, connections or sleep
 	FuzzModeDrop = iota
 	// FuzzModeDelay is a mode in which we randomly sleep
