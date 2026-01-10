@@ -12,10 +12,6 @@ on:
 jobs:
   tests:
     runs-on: self-hosted
-    strategy:
-      fail-fast: false
-      matrix:
-        part: ["00", "01", "02", "03", "04", "05"]
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-go@v6
@@ -31,5 +27,9 @@ jobs:
             Makefile
       - name: Run Go Tests
         run: |
-          make test-group-${{ matrix.part }} NUM_SPLIT=6
+          make test
+        if: env.GIT_DIFF
+      - name: Run Go Race tests
+        run: |
+          make test_race
         if: env.GIT_DIFF
