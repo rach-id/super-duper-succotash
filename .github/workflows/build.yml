@@ -12,7 +12,7 @@ on:
 jobs:
   build:
     name: Build
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     strategy:
       fail-fast: false
       matrix:
@@ -38,7 +38,7 @@ jobs:
         if: "env.GIT_DIFF != ''"
 
   test_abci_cli:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: build
     timeout-minutes: 5
     steps:
@@ -60,7 +60,7 @@ jobs:
         if: "env.GIT_DIFF != ''"
 
   test_apps:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: build
     timeout-minutes: 5
     steps:

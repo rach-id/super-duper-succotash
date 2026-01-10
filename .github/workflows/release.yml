@@ -7,7 +7,7 @@ on:
 
 jobs:
   release:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -53,7 +53,7 @@ jobs:
   release-success:
     needs: release
     if: ${{ success() }}
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Notify Slack upon release
         uses: slackapi/slack-github-action@v2.1.1
